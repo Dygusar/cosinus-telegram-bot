@@ -7,8 +7,8 @@ This project is a Telegram bot specifically designed to help students manage the
 Before you can start using this bot, you need to configure your `.env` file with the following environment variables:
 
 1. `API_TOKEN` - This is the token for your bot, which you obtained from BotFather on Telegram.
-2. `LOGIN` - This is the login for accessing your student account on Technikum Cosinus IT (if you plan to use such functionality).
-3. `PASSWORD` - This is the password for accessing your student account on Technikum Cosinus IT (if you plan to use such functionality).
+2. `LOGIN` - This is the login for accessing your student account on Technikum Cosinus IT.
+3. `PASSWORD` - This is the password for accessing your student account on Technikum Cosinus IT.
 
 The environment variables in the `.env` file should look like this:
 
