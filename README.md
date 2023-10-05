@@ -2,14 +2,6 @@
 
 This project is a Telegram bot specifically designed to help students manage their diaries and coursework through the convenience of Telegram. The bot offers a range of features to simplify the daily tasks and responsibilities of students, allowing them to access their academic information on the go.
 
-## Getting Started
-
-1. Install all the necessary dependencies using requirements.txt:
-pip install -r requirements.txt
-
-2. After configuring your .env file with the correct values, start the bot:
-python main.py
-
 ## Setup Instructions
 
 Before you can start using this bot, you need to configure your `.env` file with the following environment variables:
@@ -25,3 +17,11 @@ API_TOKEN=your_token
 LOGIN=your_login
 PASSWORD=your_password
 ```
+
+## Getting Started
+
+1. Install all the necessary dependencies using requirements.txt:
+pip install -r requirements.txt
+
+2. After configuring your .env file with the correct values, start the bot:
+python main.py
