@@ -38,15 +38,19 @@ Options.add_argument('--disable-blink-features=AutomationControlled')
 Options.add_experimental_option('excludeSwitches', ['enable-logging'])
 chrome_driver_path = 'chromedriver.exe'
 Options.add_argument('--window-size=1100,950')
-    
-async def plan(message):
+
+async def login_to_page(url):
     s = Service(chrome_driver_path)
     driver = webdriver.Chrome(service=s, options=Options)
-    driver.get("https://nticosinuswawa.mobidziennik.pl/dziennik/planlekcji?typ=podstawowy")
+    driver.get(url)
     driver.find_element(By.XPATH, '//*[@id="login"]').send_keys(LOGIN)
     driver.find_element(By.XPATH, '//*[@id="haslo"]').send_keys(PASSWORD)
     driver.find_element(By.XPATH, '/html/body/div[1]/div[2]/div[2]/form/div[3]/input').click()
-    driver.get("https://nticosinuswawa.mobidziennik.pl/dziennik/planlekcji?typ=podstawowy")
+    driver.get(url)
+    return driver
+
+async def plan(message):
+    driver = await login_to_page("https://nticosinuswawa.mobidziennik.pl/dziennik/planlekcji?typ=podstawowy")
     driver.execute_script("window.scrollBy(0, 250);")
     driver.save_screenshot('main.png')
     driver.close()
@@ -54,13 +58,7 @@ async def plan(message):
         await bot.send_photo(chat_id=message.chat.id, photo=file)
 
 async def domashka(message):
-    s = Service(chrome_driver_path)
-    driver = webdriver.Chrome(service=s, options=Options)
-    driver.get('https://nticosinuswawa.mobidziennik.pl/dziennik/kalendarzklasowy')
-    driver.find_element(By.XPATH, '//*[@id="login"]').send_keys(LOGIN)
-    driver.find_element(By.XPATH, '//*[@id="haslo"]').send_keys(PASSWORD)
-    driver.find_element(By.XPATH, '/html/body/div[1]/div[2]/div[2]/form/div[3]/input').click()
-    driver.get('https://nticosinuswawa.mobidziennik.pl/dziennik/kalendarzklasowy')
+    driver = await login_to_page('https://nticosinuswawa.mobidziennik.pl/dziennik/kalendarzklasowy')
     driver.execute_script("window.scrollBy(0, 240);")
     driver.save_screenshot('main.png')
     driver.close()
